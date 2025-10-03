@@ -1,0 +1,54 @@
+/* Basic Reset & Font */
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #121212; /* Dark background */
+    color: #ffffff; /* White text */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+}
+
+/* Main Content Container */
+.container {
+    max-width: 600px;
+    padding: 20px;
+}
+
+.logo {
+    max-width: 150px;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 2.5rem; /* Large headline */
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 1.2rem;
+    color: #b3b3b3; /* Light gray for subheading */
+    margin-bottom: 30px;
+}
+
+/* The Big Call-to-Action Button */
+.cta-button {
+    display: inline-block;
+    background-color: #0088cc; /* Telegram blue */
+    color: #ffffff;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 50px; /* Pill shape */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Hover effect for the button */
+.cta-button:hover {
+    background-color: #00aaff; /* Lighter blue on hover */
+    transform: scale(1.05); /* Slightly enlarge on hover */
+}
