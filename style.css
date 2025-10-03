@@ -1,54 +1,138 @@
-/* Basic Reset & Font */
+/* --- Basic Setup & Fonts --- */
+:root {
+    --bg-color: #121212;
+    --primary-text: #ffffff;
+    --secondary-text: #b0b0b0;
+    --accent-color: #D92EBE;
+    --gradient-start: #00A99D;
+    --gradient-end: #D92EBE;
+}
+
 body {
+    background-color: var(--bg-color);
+    color: var(--primary-text);
+    font-family: 'Montserrat', sans-serif;
     margin: 0;
-    font-family: 'Roboto', sans-serif;
-    background-color: #121212; /* Dark background */
-    color: #ffffff; /* White text */
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    text-align: center;
+    min-height: 100vh;
+    padding: 1.5rem; /* UPDATED: Use relative units */
+    box-sizing: border-box;
+    overflow-x: hidden;
+    position: relative;
 }
 
-/* Main Content Container */
+/* --- Background Decorative Shapes --- */
+.bg-shape {
+    position: absolute;
+    z-index: 0;
+    opacity: 0.4; /* UPDATED: Slightly more subtle */
+    pointer-events: none;
+    transition: transform 0.5s ease-out; /* UPDATED: Smooth transition */
+}
+
+/* UPDATED: Using viewport units and percentages for responsive positioning */
+.shape-s {
+    left: -25vw;
+    bottom: -20vh;
+    width: clamp(300px, 60vw, 500px); /* Min, Preferred, Max width */
+}
+
+.shape-b {
+    right: -20vw;
+    bottom: -15vh;
+    width: clamp(300px, 60vw, 500px);
+}
+
+.shape-u {
+    top: -20vh;
+    right: -20vw;
+    width: clamp(250px, 50vw, 400px);
+}
+
+/* --- Main Content Container --- */
 .container {
-    max-width: 600px;
-    padding: 20px;
+    max-width: 800px;
+    width: 100%; /* UPDATED: Ensures it uses available space on small screens */
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+/* --- Header Section --- */
+.site-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25rem; /* UPDATED */
+    margin-bottom: 4rem; /* UPDATED */
+    flex-wrap: wrap; /* UPDATED: Allows wrapping on small screens */
 }
 
 .logo {
-    max-width: 150px;
-    margin-bottom: 20px;
+    width: clamp(60px, 10vw, 80px); /* UPDATED: Responsive logo size */
+    height: auto;
 }
 
-h1 {
-    font-size: 2.5rem; /* Large headline */
-    font-weight: 700;
-    margin-bottom: 10px;
+.site-header h1 {
+    /* UPDATED: clamp() makes font size fluidly responsive */
+    font-size: clamp(1.5rem, 4vw, 2rem); 
+    color: var(--accent-color);
+    letter-spacing: 2px;
+    margin: 0;
 }
 
-p {
-    font-size: 1.2rem;
-    color: #b3b3b3; /* Light gray for subheading */
-    margin-bottom: 30px;
+/* --- Main Content --- */
+.content h2 {
+    font-family: 'Lora', serif;
+    /* UPDATED: Major responsive improvement for the main headline */
+    font-size: clamp(2.5rem, 8vw, 4rem); 
+    margin-bottom: 0.75rem; /* UPDATED */
 }
 
-/* The Big Call-to-Action Button */
+.subheading {
+    font-size: clamp(1rem, 2.5vw, 1.1rem); /* UPDATED */
+    color: var(--secondary-text);
+    max-width: 500px;
+    margin: 0 auto 2.5rem auto; /* UPDATED */
+    line-height: 1.6; /* UPDATED: Better readability */
+}
+
+/* --- The "JOIN NOW" Button --- */
 .cta-button {
     display: inline-block;
-    background-color: #0088cc; /* Telegram blue */
-    color: #ffffff;
-    padding: 15px 30px;
-    font-size: 1.2rem;
-    font-weight: bold;
+    background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+    color: var(--primary-text);
+    padding: 1rem 3rem; /* UPDATED */
+    /* UPDATED: Responsive font size */
+    font-size: clamp(1.1rem, 3.5vw, 1.5rem); 
+    font-weight: 700;
     text-decoration: none;
-    border-radius: 50px; /* Pill shape */
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    border-radius: 50px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* Hover effect for the button */
 .cta-button:hover {
-    background-color: #00aaff; /* Lighter blue on hover */
-    transform: scale(1.05); /* Slightly enlarge on hover */
+    transform: scale(1.05);
+    box-shadow: 0 8px 30px rgba(217, 46, 190, 0.3);
 }
+
+/* --- Footer Disclaimer --- */
+.site-footer {
+    margin-top: 4rem; /* UPDATED */
+}
+
+.disclaimer {
+    font-size: 0.8rem;
+    color: #888888;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.5;
+}
+
+/* No media query needed for most things now, but we can add one for extreme cases if needed. 
+   The fluid design handles most screen sizes automatically. */
